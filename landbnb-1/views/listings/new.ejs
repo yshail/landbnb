@@ -1,0 +1,47 @@
+<% layout("/layouts/boilerplate") %>
+
+  <body>
+    <div class="row">
+      <div class="col-8 offset-2">
+    <h2 class="my-4 list-title">Create a New Listing</h2>
+    <form method="POST" action="/listings">
+      <div>
+        <label for="title" class="form-label">Title:</label>
+        <input name="listing[title]" class="form-control" id="title" placeholder="Enter title" type="text">
+      </div>
+      <br>
+
+      <div>
+        <label for="description" class="form=label">Description:</label>
+        <textarea name="listing[description]" rows="4" class="form-control" id="description"
+          placeholder="Enter description" type="text"></textarea>
+      </div>
+      <br>
+      <div>
+        <label for="image" class="form-label">Image Link:</label>
+        <input name="listing[image][url]" class="form-control" id="image" placeholder="Enter image URL" type="text">
+      </div>
+
+      <br>
+      <div class="row row-cols-2">
+        <div>
+        <label for="price" class="form-label">Price:</label>
+        <input name="listing[price]" class="form-control" id="price" placeholder="Enter price" type="text">
+      </div>
+      <br>
+      <div>
+        <label for="country" class="form-label">Country:</label>
+        <input name="listing[country]" class="form-control" id="country" placeholder="Enter country" type="text">
+      </div>
+      </div>
+      <br>
+      <div>
+        <label for="location" class="form-label">Location:</label>
+        <input name="listing[location]" class="form-control" id="location" placeholder="Enter Location" type="text">
+      </div>
+      <br><br>
+      <button type="submit" class="btn btn-primary px-5">Add</button>
+    </form>
+    <br><br>
+    </div></div>
+  </body>

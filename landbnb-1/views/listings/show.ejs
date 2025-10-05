@@ -1,0 +1,73 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <div class="offset-2">
+    <h2 class="mt-4 mb-2 card-title"><b><%= listing.title %></b></h2>
+    <div class="card mb-3 mt-4 border-0" style="width: 50rem">
+      <img
+        src="<%= listing.image.url %>"
+        class="card-img-top"
+        alt="..."
+        style="height: 25rem"
+      />
+      <div class="card-body">
+        <p class="card-text">
+          <b>Description:</b> <%= listing.description %><br />
+          <b>Price:</b> &#8377; <%=
+          Number(listing.price).toLocaleString("en-IN") %><br />
+          <b>Location:</b> <%= listing.location %><br />
+          <b>Country:</b> <%= listing.country %>
+        </p>
+      </div>
+      <div class="card-body show-buttons d-flex">
+        <form
+          method="GET"
+          class="me-3"
+          action="/listings/<%=listing._id%>/edit"
+        >
+          <button class="btn btn-primary">Edit</button>
+        </form>
+        <form
+          method="POST"
+          class="mx-3"
+          action="/listings/<%=listing._id%>?_method=DELETE"
+        >
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+    <hr />
+    <div>
+      <h3>Leave a Review!</h3>
+      <div>
+        <form
+          method="POST"
+          class="mx-3 needs-validation"
+          action="/listings/<%= listing._id %>/reviews"
+          novalidate
+        >
+          <label class="form-label" for="rating">Rating</label>
+          <input
+            type="range"
+            name="review[rating]"
+            class="form-range mb-3"
+            min="1"
+            max="5"
+            id="rating"
+          />
+          <div class="mb-3">
+          <label for="comment">Comment</label>
+          <textarea
+            cols="30"
+            name="review[comment]"
+            rows="5"
+            id="comment"
+            class="form-control"
+            required
+          ></textarea>
+          <div class="invalid-feedback">Please add some comments for review.</div></div>
+          <button class="btn btn-outline-dark mb-3">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

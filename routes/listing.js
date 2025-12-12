@@ -3,7 +3,7 @@ const router = express.Router({mergeParams: true});
 const wrapAsync = require("../utils/wrapAsync.js");
 const Listing = require("../models/listing.js");
 
-//Listing-Routes
+//Listing-Routes-------------------
 //Index-Route
 router.get("/", wrapAsync(async (req, res) => {
   const alllistings = await Listing.find({});
@@ -11,9 +11,9 @@ router.get("/", wrapAsync(async (req, res) => {
 }));
 
 //new-route
-router.get("/new", wrapAsync((req, res) => {
+router.get("/new", (req, res) => {
   res.render("listings/new.ejs");
-}));
+});
 
 //Show-Route
 router.get("/:id", wrapAsync(async (req, res) => {
@@ -27,6 +27,7 @@ router.get("/:id", wrapAsync(async (req, res) => {
 router.post("/",wrapAsync( async (req, res) => {
   const addListing = new Listing(req.body.listing);
   await addListing.save();
+  req.flash("success", "New Successful");
   res.redirect("/listings");
 }));
 

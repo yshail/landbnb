@@ -4,8 +4,10 @@ const User = require("../models/user.js");
 
 //User-Routes
 router.get("/signup", (req, res) => {
-  res.send("form");
+  res.render("users/signup.ejs");
 });
 
 
-exports.module = router;
+
+
+module.exports = router;

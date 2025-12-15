@@ -1,30 +1,30 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="row mt-3">
-  <div class="col-6 offset-3">
-    <form action="/signup" method="POST" class="needs-validation" novalidate>
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input
-          name="username"
-          id="username"
-          type="text"
-          class="form-control"
-          required
-        />
-        <div class="valid-feedback">Looks good!</div>
-        <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input
-          name="password"
-          id="password"
-          type="password"
-          class="form-control"
-          required
-        />
-        <div class="valid-feedback">Looks good!</div>
-      </div>
-    </form>
-    
-  </div>
-</div>
+    <div class="row mt-auto mb-auto">
+        <h1 class="text-center mt-3 mb-3">Sign Up on LANDBNB</h1>
+        <div class="col-6 offset-3">
+            <form action="/signup" method="POST" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input name="username" id="username" type="text" class="form-control" required />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input name="email" id="email" type="text" class="form-control" required />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <input name="password" id="password" type="password" class="form-control" required />
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+        </div>
+        </form>
+
+    </div>
+    </div>

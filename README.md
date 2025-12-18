@@ -425,9 +425,9 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ## 👨‍💻 Author
 
 **Your Name/Organization**
-- 🌐 Website: [your-website.com](https://your-website.com)
-- 💼 LinkedIn: [@yourprofile](https://linkedin.com/in/yourprofile)
-- 🐙 GitHub: [@yourusername](https://github.com/yourusername)
+- 🌐 Website: [landbnb3.onrender.com](https://landbnb3.onrender.com/listings)
+- 💼 LinkedIn: [@yourprofile](https://linkedin.com/in/yshail)
+- 🐙 GitHub: [@yshail](https://github.com/yshail)
 
 ---
 

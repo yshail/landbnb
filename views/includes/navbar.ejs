@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -10,55 +11,52 @@
         <a class="nav-link" href="/listings/new">Become a host</a>
       </div>
       <!-- Center Features -->
-      <div class="navbar-nav flex-grow-1 d-flex justify-content-center">
-        <div class="d-flex gap-4 align-items-center justify-content-center">
-          <a href="/listings" class="text-decoration-none text-dark text-center">
-            <div style="font-size: 24px; margin-bottom: 5px;"><i class="fa-regular fa-building"></i></div>
-            <div style="font-size: 12px;">Homes</div>
+      <div class="navbar-nav flex-grow-1 d-flex justify-content-center my-2 my-md-0">
+        <div class="d-flex gap-4 align-items-center justify-content-center feature-icons">
+          <a href="/listings" class="text-decoration-none text-dark text-center feature-link">
+            <div class="feature-icon"><i class="fa-regular fa-building"></i></div>
+            <div class="feature-label">Homes</div>
           </a>
-          <a href="/experiences" class="text-decoration-none text-dark text-center">
-            <div style="font-size: 24px; margin-bottom: 5px;"><i class="fa-regular fa-map"></i></div>
-            <div style="font-size: 12px;">Experiences</div>
+          <a href="/experiences" class="text-decoration-none text-dark text-center feature-link">
+            <div class="feature-icon"><i class="fa-regular fa-map"></i></div>
+            <div class="feature-label">Experiences</div>
           </a>
-          <a href="/services" class="text-decoration-none text-dark text-center">
-            <div style="font-size: 24px; margin-bottom: 5px;"><i class="fa-regular fa-star"></i></div>
-            <div style="font-size: 12px;">Services</div>
+          <a href="/services" class="text-decoration-none text-dark text-center feature-link">
+            <div class="feature-icon"><i class="fa-regular fa-star"></i></div>
+            <div class="feature-label">Services</div>
           </a>
         </div>
       </div>
-      
+
       <!-- Search Bar -->
-      <form class="d-flex ms-3" action="/listings/search" method="GET" role="search">
-        <div class="input-group" style="width: 300px;">
-          <input 
-            class="form-control" 
-            type="search" 
-            placeholder="Search by location, title..." 
-            aria-label="Search" 
-            name="query"
-            style="border-radius: 20px 0 0 20px; border: 2px solid #e0e0e0; padding: 8px 16px; font-size: 14px;"
-          >
-          <button 
-            class="btn btn-primary" 
-            type="submit"
-            style="border-radius: 0 20px 20px 0; padding: 8px 16px; border: 2px solid #0d6efd;"
-          >
+      <form class="d-flex ms-md-3 my-2 my-md-0 search-form" action="/listings/search" method="GET" role="search">
+        <div class="input-group search-input-group">
+          <input class="form-control search-input" type="search" placeholder="Search by location, title..."
+            aria-label="Search" name="query">
+          <button class="btn btn-primary search-btn" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
       </form>
+
+      <!-- Theme Toggle & Auth Buttons -->
+      <div class="navbar-nav ms-md-auto gap-3 align-items-center">
+        <button id="theme-toggle" class="btn btn-link nav-link px-2" title="Toggle dark mode">
+          <i class="fa-solid fa-moon theme-icon-main"></i>
+        </button>
+        <%if(currentUser){%>
+          <form action="/logout" method="get" class="d-flex">
+            <button type="submit" class="btn btn-outline-danger w-100">Logout</button>
+          </form>
+          <%}else{%>
+            <form action="/signup" method="get" class="d-flex">
+              <button type="submit" class="btn btn-outline-danger w-100">Signup</button>
+            </form>
+            <form action="/login" method="get" class="d-flex">
+              <button type="submit" class="btn btn-outline-danger w-100">Login</button>
+            </form>
+            <%}%>
+      </div>
     </div>
   </div>
-  <%if(currentUser){%>
-    <form action="/logout" method="get" class = "pe-5">
-    <button type="submit" class="btn btn-outline-danger">Logout</button>
-  </form>
-  <%}else{%>
-     <form action="/signup" method="get" class = "px-1">
-    <button type="submit" class="btn btn-outline-danger">Signup</button>
-  </form>
-    <form action="/login" method="get" class = "pe-5">
-    <button type="submit" class="btn btn-outline-danger">Login</button>
-  </form>
-  <%}%>
 </nav>

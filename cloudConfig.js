@@ -1,14 +1,6 @@
 require("dotenv").config();
 const cloudinary = require("cloudinary").v2;
-const  CloudinaryStorage  = require("multer-storage-cloudinary");
-
-
-// Validate that required environment variables are set
-if (!process.env.CLOUD_NAME || !process.env.CLOUD_API_KEY || !process.env.CLOUD_API_SECRET) {
-  console.error("❌ ERROR: Missing Cloudinary environment variables!");
-  console.error("Please set CLOUD_NAME, CLOUD_API_KEY, and CLOUD_API_SECRET in your .env file");
-  process.exit(1);
-}
+const { CloudinaryStorage } = require("multer-storage-cloudinary"); // Change 1: Added { }
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -16,15 +8,15 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-const storage = CloudinaryStorage({
-  cloudinary,
+const storage = new CloudinaryStorage({ // Change 2: Added 'new'
+  cloudinary: cloudinary,
   params: {
     folder: "Landbnb",
-    allowedFormats: ["jpg", "png", "jpeg"]
-    }
+    allowedFormats: ["png", "jpg", "jpeg"], // corrected property name is allowedFormats
+  },
 });
 
 module.exports = {
   storage,
   cloudinary
-}
+};

@@ -284,7 +284,7 @@ Special thanks to:
 
 <div align="center">
 
-### Made with 💚 by ycorps
+### Made with 💚 by Shail
 
 [⭐ Star us on GitHub](https://github.com/ycorps/landbnb) • [🔗 Visit Live Site](https://land-bnb.vercel.app/) • [🚀 Get Started](#-quick-start)
 

@@ -13,11 +13,14 @@
     </div>
   </div>
   <%if(currentUser){%>
-    <form action="/logout" method="get" class = "px-5">
+    <form action="/logout" method="get" class = "pe-5">
     <button type="submit" class="btn btn-outline-danger">Logout</button>
   </form>
   <%}else{%>
-    <form action="/login" method="get" class = "px-5">
+     <form action="/signup" method="get" class = "px-1">
+    <button type="submit" class="btn btn-outline-danger">Signup</button>
+  </form>
+    <form action="/login" method="get" class = "pe-5">
     <button type="submit" class="btn btn-outline-danger">Login</button>
   </form>
   <%}%>

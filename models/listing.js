@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 const Review = require("./review.js");
 
-const listingSchema = new Schema({
+const listingSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -13,16 +12,14 @@ const listingSchema = new Schema({
   },
   image: {
     filename: String,
-    url: {
-      type: String,
-      set: (v) => v === "https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg" ? "" : v}
+    url: String
   },
   price: Number,
   location: String,
   country: String,
   reviews: [
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Review"
     }
   ]

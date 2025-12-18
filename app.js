@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -69,6 +71,9 @@ app.get("/", (req, res) => {
 
 //Listing-Route
 app.use("/listings", listingRouter);
+
+//Review Route
+app.use("/listings", reviewRouter);
 
 app.use("/", userRouter);
 

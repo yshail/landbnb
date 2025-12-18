@@ -3,63 +3,34 @@ const router = express.Router({ mergeParams: true });
 const wrapAsync = require("../utils/wrapAsync.js");
 const Listing = require("../models/listing.js");
 const { isLoggedIn } = require("../middlware.js");
+const listingController = require("../controllers/listings.js");
+
+const multer  = require('multer')
+const { storage } = require('../cloudConfig.js');
+const upload = multer({ storage })
+
 
 //Listing-Routes-------------------
 //Index-Route
-router.get("/", wrapAsync(async (req, res) => {
-  const alllistings = await Listing.find({});
-  res.render("listings/index.ejs", { alllistings });
-}));
+router.get("/", wrapAsync(listingController.index));
 
 //new-route
-router.get("/new", isLoggedIn, (req, res) => {
-  res.render("listings/new.ejs")
-});
+router.get("/new", isLoggedIn, listingController.renderNewForm);
 
 //Show-Route
-router.get("/:id", wrapAsync(async (req, res) => {
-  const { id } = req.params;
-  const listing = await Listing.findById(id).populate("reviews");
-  // const review = await Review.findById(listing.reviews);
-  if (!listing) {
-    req.flash("error", "Entry Does not exist!");
-    res.redirect("/listings");
-  }
-  res.render("listings/show.ejs", { listing });
-}));
+router.get("/:id", wrapAsync(listingController.showListing));
 
 //Create Route
-router.post("/", isLoggedIn, wrapAsync(async (req, res) => {
-  const addListing = new Listing(req.body.listing);
-  await addListing.save();
-  req.flash("success", "New Entry Created Successfully!!");
-  res.redirect("/listings");
-}));
+router.post("/", isLoggedIn,upload.single('listing[image]') , wrapAsync(listingController.createListing));
 
 //Edit-Route
-router.get("/:id/edit",isLoggedIn, wrapAsync(async (req, res) => {
-  const { id } = req.params;
-  const listing = await Listing.findById(id);
-  res.render("listings/edit.ejs", { listing });
-
-}));
+router.get("/:id/edit",isLoggedIn, wrapAsync(listingController.editListing));
 
 //Update-Route
-router.put("/:id",isLoggedIn, wrapAsync(async (req, res) => {
-  const { id } = req.params;
-  const { listing: newData } = req.body;
-  await Listing.findByIdAndUpdate(id, newData);
-  req.flash("success", "Edited Successfully!!");
-  res.redirect(`/listings/${id}`);
-}));
+router.put("/:id",isLoggedIn,upload.single('listing[image]'), wrapAsync(listingController.updateListing));
 
 //delete-Route
-router.delete("/:id",isLoggedIn, wrapAsync(async (req, res) => {
-  const { id } = req.params;
-  await Listing.findByIdAndDelete(id);
-  req.flash("success", "Deleted Successfully!!");
-  res.redirect("/listings");
-}));
+router.delete("/:id",isLoggedIn, wrapAsync(listingController.deleteListing));
 
 
 

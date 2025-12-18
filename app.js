@@ -13,7 +13,7 @@ const experiencesRouter = require("./routes/experiences.js");
 const servicesRouter = require("./routes/services.js");
 const session = require('express-session');
 const flash = require('connect-flash');
-const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo').default || require('connect-mongo');
 const User = require("./models/user.js");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -42,14 +42,18 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 
 // 1. Session Middleware MUST come first
+const sessionSecret = process.env.SECRET || 'dev-fallback-secret-change-in-production';
+if (!process.env.SECRET) {
+  console.warn('⚠️  WARNING: SESSION_SECRET env variable is not set. Using fallback secret. Set SECRET in .env for production.');
+}
 const sessionOptions = {
   store: MongoStore.create({
-    mongoUrl: process.env.ATLASDB_URL,
+    mongoUrl: dbUrl,
     touchAfter: 24 * 3600 // Lazy session update (24 hours)
   }),
-  secret: 'thisshouldbeabettersecret!',
+  secret: sessionSecret,
   resave: false,
-  saveUninitialized: false, // Changed to false for GDPR compliance
+  saveUninitialized: false,
   cookie: {
     httpOnly: true,
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7), // 7 days

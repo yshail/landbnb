@@ -394,7 +394,7 @@ We welcome contributions! Here's how you can help:
 
 1. **Fork the Repository**
    ```bash
-   git clone https://github.com/yourusername/landbnb.git
+   git clone https://github.com/yshail/landbnb.git
    ```
 
 2. **Create Feature Branch**

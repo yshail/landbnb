@@ -434,7 +434,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ## 📞 Contact & Support
 
 - 📧 Email: support@shaileshyadav.in
-- 💬 Issues: [GitHub Issues](https://github.com/yourusername/landbnb/issues)
+- 💬 Issues: [GitHub Issues](https://github.com/yshail/landbnb/issues)
 - 💭 Discussions: [GitHub Discussions](https://github.com/yourusername/landbnb/discussions)
 
 ---

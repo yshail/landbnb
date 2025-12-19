@@ -11,6 +11,7 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 const experiencesRouter = require("./routes/experiences.js");
 const servicesRouter = require("./routes/services.js");
+const Listing = require("./models/listing.js");
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo').default || require('connect-mongo');
@@ -100,6 +101,10 @@ app.use("/experiences", experiencesRouter);
 
 //Services Route
 app.use("/services", servicesRouter);
+
+app.get("/not-built", (req, res) => {
+  res.render("listings/notMade.ejs");
+});
 
 app.use("/", userRouter);
 

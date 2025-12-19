@@ -161,6 +161,17 @@ footer {
   margin-right: 0.5rem;
 }
 
+.credit-link {
+  color: var(--nav-link-color);
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.credit-link:hover {
+  color: #fe424d !important;
+  text-decoration: underline !important;
+}
+
 
 .f-company-links a:hover {
   text-decoration: underline;

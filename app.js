@@ -86,7 +86,7 @@ app.use((req, res, next) => {
 });
 
 
-  app.get("/", wrapAsync(listingController.index));
+app.get("/", wrapAsync(listingController.index));
 
 
 //Listing-Route
